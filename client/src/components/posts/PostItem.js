@@ -6,21 +6,21 @@ import { Link } from 'react-router-dom';
 import { deletePost, addLike, removeLike } from '../../actions/postActions';
 
 class PostItem extends Component {
-  onDeleteClick(id) {
-    this.props.deletePost(id);
+  onDeleteClick(_id) {
+    this.props.deletePost(_id);
   }
 
-  onLikeClick(id) {
-    this.props.addLike(id);
+  onLikeClick(_id) {
+    this.props.addLike(_id);
   }
 
-  onUnlikeClick(id) {
-    this.props.removeLike(id);
+  onUnlikeClick(_id) {
+    this.props.removeLike(_id);
   }
 
   findUserLike(likes) {
     const { auth } = this.props;
-    if (likes.filter(like => like.user === auth.user.id).length > 0) {
+    if (likes.filter(like => like.user === auth.user._id).length > 0) {
       return true;
     } else {
       return false;
@@ -29,7 +29,6 @@ class PostItem extends Component {
 
   render() {
     const { post, auth, showActions } = this.props;
-
     return (
       <div className="card card-body mb-3">
         <div className="row">
@@ -70,7 +69,7 @@ class PostItem extends Component {
                 <Link to={`/post/${post._id}`} className="btn btn-info mr-1">
                   Comments
                 </Link>
-                {post.user === auth.user.id ? (
+                {post.user === auth.user._id ? (
                   <button
                     onClick={this.onDeleteClick.bind(this, post._id)}
                     type="button"

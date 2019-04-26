@@ -29,11 +29,11 @@ import NotFound from './components/not-found/NotFound';
 import './App.css';
 
 // Check for token
-if (localStorage.jwtToken) {
+if (localStorage.token) {
   // Set auth token header auth
-  setAuthToken(localStorage.jwtToken);
+  setAuthToken(localStorage.token);
   // Decode token and get user info and exp
-  const decoded = jwt_decode(localStorage.jwtToken);
+  const decoded = jwt_decode(localStorage.token);
   // Set user and isAuthenticated
   store.dispatch(setCurrentUser(decoded));
 
@@ -97,7 +97,7 @@ class App extends Component {
                 <PrivateRoute exact path="/feed" component={Posts} />
               </Switch>
               <Switch>
-                <PrivateRoute exact path="/post/:id" component={Post} />
+                <PrivateRoute exact path="/post/:_id" component={Post} />
               </Switch>
               <Route exact path="/not-found" component={NotFound} />
             </div>

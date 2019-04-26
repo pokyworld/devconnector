@@ -1,0 +1,4 @@
+{
+    "mongoURI": "mongodb+srv://pokyworldUser:pokyworldPassword@cluster0-vfjae.mongodb.net/test?retryWrites=true",
+    "jwtSecret": "dc_AppSecret"
+}
